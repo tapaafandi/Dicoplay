@@ -35,6 +35,5 @@ android {
 
 dependencies {
     implementation project(":core")
-    implementation "androidx.browser:browser:1.5.0"
 
 }

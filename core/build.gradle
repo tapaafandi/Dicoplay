@@ -81,4 +81,7 @@ dependencies {
     implementation "com.google.protobuf:protobuf-javalite:3.21.12"
     implementation 'com.google.protobuf:protobuf-kotlin-lite:3.21.12'
 
+    implementation "androidx.browser:browser:1.5.0"
+
+
 }

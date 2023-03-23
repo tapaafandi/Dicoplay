@@ -4,7 +4,10 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.ui.graphics.toArgb
 import com.tapaafandi.core.designsystem.theme.DicoplayTheme
+import com.tapaafandi.core.uitls.launchCustomChromeTab
 import com.tapaafandi.dicoplay.di.BookmarksModuleDependencies
 import com.tapaafandi.feature.bookmarks.di.DaggerBookmarksComponent
 import dagger.hilt.android.EntryPointAccessors
@@ -29,8 +32,11 @@ class BookmarksActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
+            val backgroundColor = MaterialTheme.colorScheme.background.toArgb()
             DicoplayTheme {
-                BookmarksRoute(viewModel = viewModel, onGameCLick = {})
+                BookmarksRoute(viewModel = viewModel, onGameCLick = {
+                    launchCustomChromeTab(this, it, backgroundColor)
+                })
             }
         }
     }

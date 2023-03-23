@@ -1,5 +1,6 @@
 package com.tapaafandi.feature.bookmarks
 
+import android.net.Uri
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -9,6 +10,8 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -24,7 +27,7 @@ import com.tapaafandi.core.ui.GameResourceCard
 fun BookmarksRoute(
     modifier: Modifier = Modifier,
     viewModel: BookmarksViewModel,
-    onGameCLick: (Int) -> Unit,
+    onGameCLick: (Uri) -> Unit,
 ) {
     val gameFeedUiState by viewModel.saveFeedUiState.collectAsStateWithLifecycle()
     BookmarksScreen(
@@ -39,7 +42,7 @@ fun BookmarksRoute(
 @Composable
 fun BookmarksScreen(
     savedFeedState: GameFeedUiState,
-    onGameCLick: (Int) -> Unit,
+    onGameCLick: (Uri) -> Unit,
     removeFromBookmarks: (Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -85,13 +88,16 @@ fun BookmarksScreen(
 fun LazyGridScope.savedGame(
     savedFeedState: GameFeedUiState,
     onGameResourceCheckedChanged: (Int, Boolean) -> Unit,
-    onGameCLick: (Int) -> Unit
+    onGameCLick: (Uri) -> Unit
 ) {
     when (savedFeedState) {
         is GameFeedUiState.Success -> {
             items(
                 savedFeedState.gameFeed, key = { it.id }
             ) { userGameResource ->
+                val gameUrl by remember {
+                    mutableStateOf(Uri.parse(userGameResource.gameUrl))
+                }
                 GameResourceCard(
                     userGameResource = userGameResource,
                     isBookmarked = userGameResource.isSaved,
@@ -101,7 +107,9 @@ fun LazyGridScope.savedGame(
                             !userGameResource.isSaved
                         )
                     },
-                    onGameClick = onGameCLick
+                    onGameClick = {
+                        onGameCLick(gameUrl)
+                    }
                 )
             }
         }
