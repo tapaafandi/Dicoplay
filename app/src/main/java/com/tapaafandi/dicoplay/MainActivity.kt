@@ -6,8 +6,9 @@ import androidx.activity.compose.setContent
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.core.view.WindowCompat
-import com.tapaafandi.dicoplay.data.util.NetworkMonitor
-import com.tapaafandi.dicoplay.designsystem.theme.DicoplayTheme
+import com.tapaafandi.core.data.util.NetworkMonitor
+import com.tapaafandi.core.designsystem.theme.DicoplayTheme
+import com.tapaafandi.dicoplay.ui.DicoplayApp
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

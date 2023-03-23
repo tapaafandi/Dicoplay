@@ -2,11 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
-        android:name="com.tapaafandi.DicoplayApplication"
+        android:name=".DicoplayApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -33,7 +32,7 @@
             android:exported="false"
             tools:node="merge">
             <meta-data
-                android:name="com.tapaafandi.dicoplay.sync.initializers.SyncInitializer"
+                android:name="com.tapaafandi.core.sync.initializers.SyncInitializer"
                 android:value="androidx.startup"
                 tools:node="remove"/>
         </provider>

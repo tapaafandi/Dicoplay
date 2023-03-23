@@ -1,0 +1,6 @@
+<resources>
+    <string name="sync_notification_channel_name">Sync</string>
+    <string name="sync_notification_channel_description">Background tasks for Dicoplay</string>
+    <string name="sync_notification_title">Dicoplay trying to sync</string>
+    <string name="games_for_you">Top free-to-play games for you</string>
+</resources>

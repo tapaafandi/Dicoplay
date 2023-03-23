@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="play_now">Play now</string>
+    <string name="platform">Platform</string>
+    <string name="genre">Genre</string>
+    <string name="publisher">Publisher</string>
+    <string name="developer">Developer</string>
+    <string name="release_date">Release Date</string>
+    <string name="information">Information</string>
+    <string name="game_description">Game Description</string>
+</resources>

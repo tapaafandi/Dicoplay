@@ -15,3 +15,7 @@ dependencyResolutionManagement {
 rootProject.name = "Dicoplay"
 include ':app'
 include ':core'
+include ':feature'
+include ':feature:home'
+include ':feature:game'
+include ':feature:bookmarks'

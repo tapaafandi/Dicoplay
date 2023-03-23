@@ -4,18 +4,8 @@
     <string name="saved">Saved Games</string>
     <string name="not_connected">You aren’t connected to the internet</string>
     <string name="top_free_to_play_games">Top Free To Play Games</string>
-    <string name="sync_notification_channel_name">Sync</string>
-    <string name="sync_notification_channel_description">Background tasks for Dicoplay</string>
-    <string name="sync_notification_title">Dicoplay trying to sync</string>
-    <string name="games_for_you">Top free-to-play games for you</string>
-    <string name="play_now">Play now</string>
-    <string name="platform">Platform</string>
-    <string name="genre">Genre</string>
-    <string name="publisher">Publisher</string>
-    <string name="developer">Developer</string>
-    <string name="release_date">Release Date</string>
-    <string name="information">Information</string>
-    <string name="game_description">Game Description</string>
+    <string name="title_bookmarks">Bookmarks</string>
+    <string name="title_dynamicfeature">Module Title</string>
     <string name="no_saved_game">No saved game</string>
     <string name="no_saved_description">Your saved game will be store here</string>
 </resources>

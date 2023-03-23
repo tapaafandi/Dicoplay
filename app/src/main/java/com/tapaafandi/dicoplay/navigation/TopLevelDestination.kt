@@ -1,8 +1,8 @@
 package com.tapaafandi.dicoplay.navigation
 
 import com.tapaafandi.dicoplay.R
-import com.tapaafandi.dicoplay.designsystem.icon.DicoplayIcon
-import com.tapaafandi.dicoplay.designsystem.icon.Icon
+import com.tapaafandi.core.designsystem.icon.DicoplayIcon
+import com.tapaafandi.core.designsystem.icon.Icon
 
 enum class TopLevelDestination(
     val selectedIcon: Icon,

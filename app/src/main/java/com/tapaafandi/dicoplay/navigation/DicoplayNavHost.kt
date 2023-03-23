@@ -4,17 +4,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import com.tapaafandi.dicoplay.presentation.bookmarks.navigation.bookmarksScreen
-import com.tapaafandi.dicoplay.presentation.game_details.navigation.gameDetailsScreen
-import com.tapaafandi.dicoplay.presentation.game_details.navigation.navigateToGameDetails
-import com.tapaafandi.dicoplay.presentation.home.navigation.homeRoute
-import com.tapaafandi.dicoplay.presentation.home.navigation.homeScreen
+import com.tapaafandi.feature.game.navigation.gameDetailsScreen
+import com.tapaafandi.feature.game.navigation.navigateToGameDetails
+import com.tapaafandi.home.navigation.homeScreen
 
 @Composable
 fun DicoplayNavHost(
     navController: NavHostController,
     modifier: Modifier = Modifier,
-    startDestination: String = homeRoute
+    startDestination: String = com.tapaafandi.home.navigation.homeRoute
 ) {
     NavHost(
         navController = navController,
@@ -23,11 +21,6 @@ fun DicoplayNavHost(
     ) {
         homeScreen(
             onGameClick = {
-                navController.navigateToGameDetails(it)
-            }
-        )
-        bookmarksScreen(
-            onGameCLick = {
                 navController.navigateToGameDetails(it)
             }
         )
