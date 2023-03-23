@@ -38,10 +38,6 @@ class OfflineFirstGameRepository @Inject constructor(
         }
     }
 
-    override suspend fun insertGames(games: List<GameEntity>) {
-        gameDao.insertGames(games = games)
-    }
-
     override suspend fun synchronize(): Boolean {
         val response = network.getTopFreeToPlayGames()
         if (response.isSuccessful) {
