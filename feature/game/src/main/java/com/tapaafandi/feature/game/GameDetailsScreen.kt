@@ -1,10 +1,6 @@
 package com.tapaafandi.feature.game
 
-import android.content.Context
 import android.net.Uri
-import androidx.annotation.ColorInt
-import androidx.browser.customtabs.CustomTabColorSchemeParams
-import androidx.browser.customtabs.CustomTabsIntent
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.indication
@@ -34,6 +30,7 @@ import com.tapaafandi.core.designsystem.component.DicoplayToggleButton
 import com.tapaafandi.core.designsystem.icon.DicoplayIcon
 import com.tapaafandi.core.domain.model.BookmarkableGame
 import com.tapaafandi.core.domain.model.Game
+import com.tapaafandi.core.uitls.launchCustomChromeTab
 
 @Composable
 fun GameDetailsRoute(
@@ -324,12 +321,3 @@ fun GameDetailsScreenPreview() {
     )
 }
 
-fun launchCustomChromeTab(context: Context, uri: Uri, @ColorInt toolbarColor: Int) {
-    val customTabBarColor = CustomTabColorSchemeParams.Builder()
-        .setToolbarColor(toolbarColor).build()
-    val customTabsIntent = CustomTabsIntent.Builder()
-        .setDefaultColorSchemeParams(customTabBarColor)
-        .build()
-
-    customTabsIntent.launchUrl(context, uri)
-}
