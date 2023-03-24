@@ -11,5 +11,5 @@ interface GameRepository {
 
     suspend fun updateGameInformationFromNetwork(gameId: Int)
 
-    suspend fun synchronize(): Boolean
+    suspend fun synchronize(): Flow<Boolean>
 }

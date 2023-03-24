@@ -8,6 +8,7 @@ import com.tapaafandi.core.sync.initializers.syncForegroundInfo
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.withContext
 
 @HiltWorker
@@ -20,7 +21,7 @@ class SyncWorker @AssistedInject constructor(
     override suspend fun getForegroundInfo(): ForegroundInfo = context.syncForegroundInfo()
 
     override suspend fun doWork(): Result = withContext(Dispatchers.IO) {
-        val syncedSuccessfully = gameRepository.synchronize()
+        val syncedSuccessfully = gameRepository.synchronize().first()
         if (syncedSuccessfully) {
             Result.success()
         } else {

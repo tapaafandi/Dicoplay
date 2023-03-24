@@ -101,8 +101,12 @@ fun GameDetailsScreen(
                         )
                     }
                     Spacer(modifier = Modifier.height(16.dp))
-                    gameUiState.bookmarkableGame.game.description?.let {
-                       ExpandingGameDescription(text = it)
+                    gameUiState.bookmarkableGame.game.description.let { description ->
+                        if (description != null) {
+                            ExpandingGameDescription(text = description)
+                        } else {
+                            ExpandingGameDescription(text = gameUiState.bookmarkableGame.game.shortDescription)
+                        }
                     }
                     Spacer(modifier = Modifier.height(24.dp))
                     GameInformation(

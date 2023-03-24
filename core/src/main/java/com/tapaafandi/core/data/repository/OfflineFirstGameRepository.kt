@@ -7,13 +7,13 @@ import com.tapaafandi.core.data.network.DicoplayNetworkDataSource
 import com.tapaafandi.core.data.network.dto.asEntity
 import com.tapaafandi.core.domain.model.Game
 import com.tapaafandi.core.domain.repository.GameRepository
+import com.tapaafandi.core.domain.util.Resource
 import kotlinx.coroutines.flow.*
-import java.io.IOException
 import javax.inject.Inject
 
 class OfflineFirstGameRepository @Inject constructor(
     private val network: DicoplayNetworkDataSource,
-    private val dicoplayDatabase: DicoplayDatabase
+    dicoplayDatabase: DicoplayDatabase
 ) : GameRepository {
 
     private val gameDao = dicoplayDatabase.gameDao()
@@ -27,28 +27,33 @@ class OfflineFirstGameRepository @Inject constructor(
     }
 
     override suspend fun updateGameInformationFromNetwork(gameId: Int) {
-        try {
-            val localGame = gameDao.getGameDetails(gameId).first()
-            val response = network.getGameDetails(gameId)
-            response.body()?.let { networkGameDetails ->
-                gameDao.upsertGame(networkGameDetails.asEntity(localGame.id))
+        val localGame = gameDao.getGameDetails(gameId).first()
+        network.getGameDetails(gameId).collectLatest { result ->
+            when (result) {
+                is Resource.Success -> {
+                    result.data?.let {
+                        gameDao.upsertGame(it.asEntity(localGame.id))
+                    }
+                }
+                else -> Unit
             }
-        } catch (e: IOException) {
-            e.printStackTrace()
         }
     }
 
-    override suspend fun synchronize(): Boolean {
-        val response = network.getTopFreeToPlayGames()
-        if (response.isSuccessful) {
-            response.body()?.let { networkGames ->
-                gameDao.deleteGames()
-                gameDao.insertGames(networkGames.map { it.asEntity() })
-                return true
+    override suspend fun synchronize(): Flow<Boolean> {
+        return network.getTopFreeToPlayGames().map { result ->
+            when (result) {
+                is Resource.Error -> {
+                    false
+                }
+                is Resource.Success -> {
+                    result.data?.let {
+                        gameDao.deleteGames()
+                        gameDao.insertGames(result.data.map { it.asEntity() })
+                    }
+                    true
+                }
             }
-        } else {
-            return false
         }
-        return false
     }
 }
