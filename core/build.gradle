@@ -88,5 +88,5 @@ dependencies {
 
     implementation "androidx.browser:browser:1.5.0"
 
-
+    implementation "net.zetetic:android-database-sqlcipher:4.4.0"
 }
