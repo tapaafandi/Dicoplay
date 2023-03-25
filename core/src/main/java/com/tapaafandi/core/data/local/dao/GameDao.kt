@@ -13,8 +13,8 @@ interface GameDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertGames(games: List<GameEntity>)
 
-    @Upsert
-    suspend fun upsertGame(game: GameEntity)
+    @Update
+    suspend fun updateGame(game: GameEntity)
 
     @Query("SELECT * FROM games WHERE gameId = :gameId")
     fun getGameDetails(gameId: Int): Flow<GameEntity>

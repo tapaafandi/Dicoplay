@@ -32,7 +32,7 @@ class OfflineFirstGameRepository @Inject constructor(
             when (result) {
                 is Resource.Success -> {
                     result.data?.let {
-                        gameDao.upsertGame(it.asEntity(localGame.id))
+                        gameDao.updateGame(it.asEntity(localGame.id))
                     }
                 }
                 else -> Unit
