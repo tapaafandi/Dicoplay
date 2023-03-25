@@ -9,7 +9,8 @@ import com.tapaafandi.core.data.local.entities.GameEntity
     entities = [
         GameEntity::class
     ],
-    version = 1
+    version = 1,
+    exportSchema = false
 )
 abstract class DicoplayDatabase : RoomDatabase() {
 
