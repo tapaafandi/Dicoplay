@@ -3,9 +3,4 @@
     <string name="home">Home</string>
     <string name="saved">Saved Games</string>
     <string name="not_connected">You aren’t connected to the internet</string>
-    <string name="top_free_to_play_games">Top Free To Play Games</string>
-    <string name="title_bookmarks">Bookmarks</string>
-    <string name="title_dynamicfeature">Module Title</string>
-    <string name="no_saved_game">No saved game</string>
-    <string name="no_saved_description">Your saved game will be store here</string>
 </resources>
